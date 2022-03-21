@@ -10,7 +10,7 @@ class Loading extends Phaser.Scene {
     
     //* Menu 
     this.load.image("title","./assets/img/title.png")
-    this.load.image("background","./assets/img/background.png")
+    this.load.image("background","./assets/img/background.jpg")
     this.load.image("musicOn","./assets/img/musicOn.png")
     this.load.image("musicOff","./assets/img/musicOff.png")
 

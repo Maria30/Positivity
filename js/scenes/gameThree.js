@@ -13,7 +13,7 @@ class GameThree extends Phaser.Scene {
     this.isRepaired = false
 
     //* Arrière-plan du village 
-    this.background = this.add.image(0, config.height, 'test').setOrigin(0,1)
+    this.background = this.add.image(0, config.height, 'village').setOrigin(0,1)
     this.background.setScale(.7)
 
     //* Touches de déplacement et d'actions

@@ -17,7 +17,7 @@ class GameFive extends Phaser.Scene {
     this.keyAction = this.input.keyboard.addKey(game.controls[2])
 
     //* Arrière-plan du village
-    this.background = this.add.image(0, config.height, 'test').setOrigin(0,1)
+    this.background = this.add.image(0, config.height, 'village').setOrigin(0,1)
     this.background.setScale(.7)
 
     //* Boîtes aux lettres
