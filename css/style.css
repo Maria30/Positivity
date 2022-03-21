@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Normal';
+  src: url('../assets/fonts/hey-comic/Hey_Comic.ttf');
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
