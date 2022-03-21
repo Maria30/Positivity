@@ -5,12 +5,12 @@ class Loading extends Phaser.Scene {
 
   preload() {
     this.showLoadingText()
+
+    this.load.plugin('rexroundrectangleplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexroundrectangleplugin.min.js', true)
     
+    //* Menu 
     this.load.image("title","./assets/img/title.png")
-    this.load.image("background","./assets/img/background.jpg")
-    this.load.image("background2","./assets/img/background.png")
-    this.load.image("foreground","./assets/img/foreground.png")
-    this.load.plugin('rexroundrectangleplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexroundrectangleplugin.min.js', true);
+    this.load.image("background","./assets/img/background.png")
     this.load.image("musicOn","./assets/img/musicOn.png")
     this.load.image("musicOff","./assets/img/musicOff.png")
 
@@ -23,8 +23,9 @@ class Loading extends Phaser.Scene {
     this.load.audio('planeFixed', './assets/audio/planeFixed.wav')
 
     //* Marche
-    this.load.image("test","./assets/img/background1.jpg")
     this.load.image("mailbox","./assets/img/mailbox.png")
+    this.load.image("village","./assets/img/village.jpg")
+    this.load.image("foreground","./assets/img/foreground.png")
 
     //* Personnages
     this.load.image("mayor","./assets/img/characterColor/mayor.png")
