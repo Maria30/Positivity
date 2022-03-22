@@ -17,7 +17,8 @@ var config = {
     Thanks,
     ThanksJPO,
     Controls,
-    Music
+    Music,
+    End
   ]
 }
 

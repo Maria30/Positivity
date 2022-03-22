@@ -15,7 +15,7 @@ class AskHelp extends Phaser.Scene {
     //* Définition des variables
     this.textCount = 0
 
-    //* Arrière-plan du village 
+    //* Arrière-plan
     this.background =  this.add.tileSprite(0, 0, window.width, window.height, "background")
     this.background.setOrigin(0,0)
 

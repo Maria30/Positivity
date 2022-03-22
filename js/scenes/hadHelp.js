@@ -83,7 +83,7 @@ class HadHelp extends Phaser.Scene {
           })
         break
         case 10: 
-          game.scene.start("thanks")
+          game.scene.start("end")
         break
         }
       }

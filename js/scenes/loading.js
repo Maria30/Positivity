@@ -28,7 +28,8 @@ class Loading extends Phaser.Scene {
     this.load.image("foreground","./assets/img/foreground.png")
 
     //* Personnages
-    this.load.image("mayor","./assets/img/characterColor/mayor.png")
+    this.load.image("mayor","./assets/img/characterGrey/mayor.png")
+    this.load.image("mayorHappy","./assets/img/characterColor/mayorHappy.png")
   
     this.load.image("masonGrey","./assets/img/characterGrey/masonGrey.png")
     this.load.image("mason","./assets/img/characterColor/mason.png")
@@ -238,6 +239,6 @@ class Loading extends Phaser.Scene {
   create() {    
     game.scene.stop("loading")
     game.scene.start("music")
-    game.scene.start("menu")
+    game.scene.start("gameFive")
   }
 }
