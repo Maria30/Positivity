@@ -11,10 +11,12 @@ class GameThree extends Phaser.Scene {
     this.isFound = 0
     this.isReadyToTalk = false
     this.isRepaired = false
+    this.distance = -2000
 
     //* Arrière-plan du village 
     this.background = this.add.image(0, config.height, 'village').setOrigin(0,1)
     this.background.setScale(.7)
+    this.background.x = this.distance
 
     //* Touches de déplacement et d'actions
     this.keyLeft = this.input.keyboard.addKey(game.controls[0])
@@ -33,21 +35,26 @@ class GameThree extends Phaser.Scene {
     })
     this.npc.children.iterate((child) => {
       child.setScale(.5, .5)
+      child.setOrigin(.5, .5)
+      child.x += this.distance
     })
 
     //* Parties de l'avion
     this.part1 = this.add.image(4145, config.height-140, "part1").setInteractive({cursor: 'pointer'})
     this.part1.displayHeight = 50
     this.part1.displayWidth = 50
+    this.part1.x += this.distance
 
     this.part2 = this.add.image(1085, config.height-370, "part2").setInteractive({cursor: 'pointer'})
     this.part2.angle = 30
     this.part2.displayHeight = 50
     this.part2.displayWidth = 50
+    this.part2.x += this.distance
 
     this.part3 = this.add.image(2245, config.height-360, "part3").setInteractive({cursor: 'pointer'})
     this.part3.displayHeight = 50
     this.part3.displayWidth = 50
+    this.part3.x += this.distance
 
     //* Boîtes aux lettres
     this.mailboxes = this.add.group({
@@ -62,7 +69,8 @@ class GameThree extends Phaser.Scene {
     })
     this.mailboxes.children.iterate((child) => {
       child.setScale(.1, .1)
-      child.setOrigin(.5,.5)
+      child.setOrigin(.5, .5)
+      child.x += this.distance
     })
     this.mailboxes.children.entries[2].visible = false
     this.mailboxes.children.entries[4].visible = false
@@ -75,6 +83,7 @@ class GameThree extends Phaser.Scene {
     //* Premier-plan du village 
     this.foreground = this.add.image(0, config.height, 'foreground').setOrigin(0,1)
     this.foreground.setScale(.7)
+    this.foreground.x = this.distance
 
     //* Icônes des parties de l'avion
     this.partIcon1 = this.add.image(0, config.height, "partIcon1").setOrigin(0,1).setInteractive({cursor: 'pointer'})

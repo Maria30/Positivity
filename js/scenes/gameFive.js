@@ -10,6 +10,7 @@ class GameFive extends Phaser.Scene {
     this.talking = false
     game.isReadyToTalk = false
     this.count = 0
+    this.distance = -3500
     
     //* Touches de déplacement et d'action
     this.keyLeft = this.input.keyboard.addKey(game.controls[0])
@@ -19,6 +20,7 @@ class GameFive extends Phaser.Scene {
     //* Arrière-plan du village
     this.background = this.add.image(0, config.height, 'village').setOrigin(0,1)
     this.background.setScale(.7)
+    this.background.x = this.distance
 
     //* Boîtes aux lettres
     this.mailboxes = this.add.group({
@@ -34,6 +36,7 @@ class GameFive extends Phaser.Scene {
     this.mailboxes.children.iterate((child) => {
       child.setScale(.1, .1)
       child.setOrigin(.5,.5)
+      child.x += this.distance
       child.setInteractive({cursor: "pointer"})
     })
     this.mailboxes.children.entries[2].visible = false
@@ -52,6 +55,7 @@ class GameFive extends Phaser.Scene {
     this.npc.children.iterate((child) => {
       child.setScale(.5, .5)
       child.setOrigin(.5, .5)
+      child.x += this.distance
     })
 
     //* Personnage joué
@@ -74,6 +78,7 @@ class GameFive extends Phaser.Scene {
     //* Premier-plan du village 
     this.foreground = this.add.image(0, config.height, 'foreground').setOrigin(0,1)
     this.foreground.setScale(.7)
+    this.foreground.x = this.distance
 
     for (let i=0; i<this.mailboxes.children.entries.length; i++) {
       this.mailboxes.children.entries[i].on('pointerup', function() {
