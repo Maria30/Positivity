@@ -26,7 +26,7 @@ class GameTwo extends Phaser.Scene {
     this.rod = this.add.image(4910, config.height-200, "rod").setInteractive({cursor: 'pointer'})
     this.rod.setScale(.1)
     this.rod.angle = 25
-    this.rod.x = this.distance
+    this.rod.x += this.distance
 
     //* Boîtes aux lettres
     this.mailboxes = this.add.group({
