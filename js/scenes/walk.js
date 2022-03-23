@@ -8,6 +8,7 @@ class Walk extends Phaser.Scene {
     this.helper = data.helper
     this.helped = data.helped
     this.people = data.people
+    this.startX = data.startX
   }
 
   create() {
@@ -24,8 +25,7 @@ class Walk extends Phaser.Scene {
     //* Arrière-plan du village 
     this.background = this.add.image(0, config.height, 'village').setOrigin(0,1)
     this.background.setScale(.7)
-
-    console.log(game.controls)
+    this.background.x = this.startX
 
     //* Boîtes aux lettres
     this.mailboxes = this.add.group({
@@ -41,6 +41,7 @@ class Walk extends Phaser.Scene {
     this.mailboxes.children.iterate((child) => {
       child.setScale(.1, .1)
       child.setOrigin(.5,.5)
+      child.x += this.startX
     })
     this.mailboxes.children.entries[2].visible = false
     this.mailboxes.children.entries[4].visible = false
@@ -58,6 +59,7 @@ class Walk extends Phaser.Scene {
     this.npc.children.iterate((child) => {
       child.setScale(.5, .5)
       child.setOrigin(.5, .5)
+      child.x += this.startX
     })
 
     //* Personnage joué
@@ -96,6 +98,7 @@ class Walk extends Phaser.Scene {
     //* Premier-plan du village 
     this.foreground = this.add.image(0, config.height, 'foreground').setOrigin(0,1)
     this.foreground.setScale(.7)
+    this.foreground.x = this.startX
 
     //* Indice d'événement de discussion
     this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-150, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
@@ -180,7 +183,6 @@ class Walk extends Phaser.Scene {
   }
 
   move() {
-
     //* Avancer vers l'avant
     if(this.keyRight.isDown) {
       this.character.flipX = true

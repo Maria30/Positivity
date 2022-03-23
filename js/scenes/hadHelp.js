@@ -58,28 +58,32 @@ class HadHelp extends Phaser.Scene {
           game.scene.start("walk", { 
             helper: "mason", 
             helped: "fishermanGrey", 
-            people: ['mayor', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey']
+            people: ['mayor', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
+            startX: -1250
           })
         break
         case 4: 
           game.scene.start("walk", { 
             helper: "fisherman", 
             helped: "kidGrey", 
-            people: ['mayor', 'mason', 'kidGrey', 'gardenerGrey', 'postmanGrey']
+            people: ['mayor', 'mason', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
+            startX: -2000
           })
         break
         case 6: 
           game.scene.start("walk", { 
             helper: "kid", 
             helped: "gardenerGrey", 
-            people: ['mayor', 'mason', 'fisherman', 'gardenerGrey', 'postmanGrey']
+            people: ['mayor', 'mason', 'fisherman', 'gardenerGrey', 'postmanGrey'],
+            startX: -2750
           })
         break
         case 8: 
           game.scene.start("walk", { 
             helper: "gardener", 
             helped: "postmanGrey", 
-            people: ['mayor', 'mason', 'fisherman', 'kid', 'postmanGrey']
+            people: ['mayor', 'mason', 'fisherman', 'kid', 'postmanGrey'],
+            startX: -3500
           })
         break
         case 10: 

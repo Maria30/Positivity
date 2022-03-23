@@ -56,7 +56,8 @@ class MainMenu extends Phaser.Scene {
           game.scene.start("walk", {
             helper: "mayor",
             helped: "masonGrey",
-            people: ['masonGrey', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey']
+            people: ['masonGrey', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
+            startX: 0
           })
         break
         case 1: 

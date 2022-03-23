@@ -9,8 +9,8 @@ class Thanks extends Phaser.Scene {
     this.add.text(config.width*.5, config.height*.1, "Merci beaucoup d'avoir joué à", {fontFamily: 'Normal', fontSize: '4em', color:'#444'}).setOrigin(0.5, 0.5)
     this.title = this.add.image(config.width*.5, config.height*.3, "title").setOrigin(0.5, 0.5)
     this.title.setScale(.5)
-    this.add.text(config.width*.5, config.height*.45, "La positivité, l’aide et l’espoir sont primordiaux pour le bonheur de tous, alors aide tes proches et ceux que tu aimes, et n’abandonne jamais, quoi qu’il arrive !", {fontFamily: 'Normal', fontSize: '2.5em', color:'#444'}).setOrigin(0.5, 0.5)
-    this.add.text(config.width*.5, config.height*.50, "N'hésite pas à t'abonner à notre page Instagram et à remplir notre formulaire de satisfaction !", {fontFamily: 'Normal', fontSize: '2.5em', color:'#444'}).setOrigin(0.5, 0.5)
+  
+    this.add.text(config.width*.5, config.height*.45, "N'hésite pas à t'abonner à notre page Instagram et à remplir notre formulaire de satisfaction !", {fontFamily: 'Normal', fontSize: '2.5em', color:'#444'}).setOrigin(0.5, 0.5)
 
     this.instagram = this.add.image(config.width*.35, config.height*.65, "instagram").setOrigin(0.5, 0.5).setInteractive({cursor: 'pointer'})
     this.instagram.displayHeight = 100
