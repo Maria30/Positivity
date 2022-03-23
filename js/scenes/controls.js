@@ -55,13 +55,20 @@ class Controls extends Phaser.Scene {
     })
 
     this.rectFinish.on('pointerup', function () {
+      game.scene.keys.music.playSound('click')
       game.scene.stop('controls')  
       game.scene.start('menu')
     })
     this.clickFinish.on('pointerup', function () {
+      game.scene.keys.music.playSound('click')
       game.scene.stop('controls')  
       game.scene.start('menu')
     })
+
+    this.rectFinish.on('pointerover',function(){this.fillColor = 0x999999, game.scene.keys.music.playSound('hoverBtn')})
+    this.rectFinish.on('pointerout',function(){this.fillColor = 0x666666}) 
+    this.clickFinish.on('pointerover',function(){this.scene.rectFinish.fillColor = 0x999999})
+    this.clickFinish.on('pointerout',function(){this.scene.rectFinish.fillColor = 0x666666})  
   }
 
   changeKey(text, control) {
