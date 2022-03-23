@@ -239,6 +239,6 @@ class Loading extends Phaser.Scene {
   create() {    
     game.scene.stop("loading")
     game.scene.start("music")
-    game.scene.start("gameThree")
+    game.scene.start("menu")
   }
 }

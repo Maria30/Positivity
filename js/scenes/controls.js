@@ -5,7 +5,8 @@ class Controls extends Phaser.Scene {
 
   create() {
     //* Définitions des variables
-    this.isChanging = false
+    // this.isChanging = false
+    this.allowKeyChange = false
 
     //* Arrière-plan
     this.background = this.add.image(config.width*.5, config.height*.5, "background")
@@ -41,21 +42,17 @@ class Controls extends Phaser.Scene {
     this.message.visible = false
 
     this.leftKey.on('pointerup', function() {
-      if (!this.scene.isChanging) {
-        this.scene.changeKey(this, 0)
-      }
+      this.scene.allowKeyChange = true
+      this.scene.changeKey(this, 0)
     })
     this.rightKey.on('pointerup', function() {
-      if (!this.scene.isChanging) {
-        this.scene.changeKey(this, 1)
-      }
+      this.scene.allowKeyChange = true
+      this.scene.changeKey(this, 1)
     })
     this.actionKey.on('pointerup', function() {
-      if (!this.scene.isChanging) {
-        this.scene.changeKey(this, 2)
-      }
+      this.scene.allowKeyChange = true
+      this.scene.changeKey(this, 2)
     })
-    
 
     this.rectFinish.on('pointerup', function () {
       game.scene.stop('controls')  
@@ -75,41 +72,44 @@ class Controls extends Phaser.Scene {
     this.currentControl = control
 
     console.log(game.controls)
-    if (!this.isChanging) {
+
+    if (this.allowKeyChange) {
       this.message.visible = true
-      this.isChanging = true
+    
       text.style.setColor("#999999")
       
       this.input.keyboard.on('keydown', function (event) {
+        if(this.scene.allowKeyChange) {
+          this.scene.allowKeyChange = false
 
-        //* Vérification que la valeur de la touche est une lettre
-        if (event.keyCode, 65 <= event.keyCode && event.keyCode <= 90){
+          //* Vérification que la valeur de la touche est une lettre
+          if (event.keyCode, 65 <= event.keyCode && event.keyCode <= 90){
 
-          console.log(game.controls.includes(event.key.toUpperCase()), game.controls, event.key.toUpperCase())
-          //* Vérification que la valeur de la touche n'est pas déjà utilisée
-          if (!game.controls.includes(event.key.toUpperCase())) {
+            console.log(this.scene.allowKeyChange, game.controls.includes(event.key.toUpperCase()), game.controls, event.key.toUpperCase())
 
-            this.scene.message.visible = false
+            //* Vérification que la valeur de la touche n'est pas déjà utilisée
+            if (!game.controls.includes(event.key.toUpperCase())) {
 
-            game.controls[this.scene.currentControl] = event.key.toUpperCase()
+              this.scene.message.visible = false
 
-            this.scene.leftKey.setText(game.controls[0])
-            this.scene.rightKey.setText(game.controls[1])
-            this.scene.actionKey.setText(game.controls[2])
+              game.controls[this.scene.currentControl] = event.key.toUpperCase()
 
-            text.style.setColor("black")
+              this.scene.leftKey.setText(game.controls[0])
+              this.scene.rightKey.setText(game.controls[1])
+              this.scene.actionKey.setText(game.controls[2])
 
-            this.scene.isChanging = false
-
+              text.style.setColor("black")
+            }
+            else {
+              text.style.setColor("black")
+              alert("Cette touche a déjà été choisie pour une autre action")
+            }
           }
           else {
-            alert("Cette touche a déjà été choisie pour une autre action")
+            text.style.setColor("black")
+            alert("Seules les lettres sont acceptées")
           }
         }
-        else {
-          alert("Seules les lettres sont acceptées")
-        }
-        console.log(game.controls)
       })
     }
     else {
