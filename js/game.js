@@ -18,6 +18,7 @@ var config = {
     ThanksJPO,
     Controls,
     Music,
+    Moral,
     End
   ]
 }

@@ -6,13 +6,12 @@ class End extends Phaser.Scene {
   create() {
     //* Définition des variables
     this.textCount = 0
+    this.textArray = game.textArray[10]
 
     //* Arrière-plan du village
     this.background =  this.add.image(0, 0, "village")
     this.background.setOrigin(0,0)
     this.background.setScale(.7)
-    // this.background.displayWidth = config.width
-    // this.background.displayHeight = config.height
 
     //* Boîtes aux lettres
     this.mailboxes = this.add.group({
@@ -65,7 +64,7 @@ class End extends Phaser.Scene {
     this.instruction = this.add.text(config.width*.5, config.height*.05, "Clique pour continuer", {fontFamily: 'Normal', fontSize: '2em', color: "black"}).setOrigin(.5,.5)
     
     //* Dialogue
-    this.text = this.add.text(config.width*.5, config.height*.25, "Le facteur tend la lettre au maire", {fontFamily: 'Normal', fontSize: '3em', color: "black", wordWrap: {width: config.width*.7}}).setOrigin(.5, .5)
+    this.text = this.add.text(config.width*.5, config.height*.25, this.textArray[0], {fontFamily: 'Normal', fontSize: '3em', color: "black", wordWrap: {width: config.width*.7}}).setOrigin(.5, .5)
     this.nextDialogue() 
   }
 
@@ -73,12 +72,12 @@ class End extends Phaser.Scene {
     this.input.on('pointerup', function () {
 
       this.scene.textCount++
-      // this.scene.text.setText(this.scene.textArray[this.scene.textCount])
+      this.scene.text.setText(this.scene.textArray[this.scene.textCount])
 
-      // if (this.scene.textCount >= this.scene.textArray.length) {
+      if (this.scene.textCount >= this.scene.textArray.length) {
         game.scene.stop('end')
-        game.scene.start("thanks")
-      // }
+        game.scene.start("moral")
+      }
     })
   }
 }

@@ -13,6 +13,7 @@ class Loading extends Phaser.Scene {
     this.load.image("background","./assets/img/background.jpg")
     this.load.image("musicOn","./assets/img/musicOn.png")
     this.load.image("musicOff","./assets/img/musicOff.png")
+    this.load.image("happySun","./assets/img/happySun.png")
 
     //* Audio
     this.load.audio('music', './assets/audio/main_theme.wav')
@@ -194,6 +195,14 @@ class Loading extends Phaser.Scene {
         "Voilà ! La lettre est très probablement destinée à la mairie de ce village !",
         "Mais bien sûr ! Voilà pourquoi on pouvait voir le symbole du village sur l'enveloppe ! Je vais le lui transmettre immédiatement ! Merci beaucoup monsieur !",
         "Je vous en prie ! J'espère que le message de cette lettre est une bonne nouvelle !"
+      ],
+      //* 10
+      //* Message de fin
+      [
+        "Le facteur tend la lettre au maire qui la prend.",
+        "En voyant le nom de l'expéditeur, il ouvre tout de suite la lettre et demande aux villageois de se rapprocher.",
+        "Le ville d'à côté a observé la bienveillance qui régne sur le village et à décidé d'apporter également son aide !",
+        "Nos villageois n'auront plus jamais à se soucier du passage de la catastrophe !"
       ]
     ]
 
@@ -239,6 +248,6 @@ class Loading extends Phaser.Scene {
   create() {    
     game.scene.stop("loading")
     game.scene.start("music")
-    game.scene.start("menu")
+    game.scene.start("end")
   }
 }
