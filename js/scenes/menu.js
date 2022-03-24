@@ -58,44 +58,44 @@ class MainMenu extends Phaser.Scene {
             people: ['masonGrey', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
             startX: 0
           })
-        break
+          break
         case 1: 
           game.scene.start("gameOne")
-        break
-        case 3: 
+          break
+        case 2: 
           game.scene.start("walk", { 
             helper: "mason", 
             helped: "fishermanGrey", 
             people: ['mayor', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
-            startX: -1250
+            startX: -1000
           })
         break
-        case 4: 
+        case 3: 
           game.scene.start("gameTwo")
-        break
-        case 5: 
+          break
+        case 4: 
           game.scene.start("walk", { 
             helper: "fisherman", 
             helped: "kidGrey", 
             people: ['mayor', 'mason', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
             startX: -2000
           })
+          break
+        case 5: 
+          game.scene.start("gameThree")
         break
         case 6: 
-          game.scene.start("gameThree")
-          break
-        case 7: 
           game.scene.start("walk", { 
             helper: "kid", 
             helped: "gardenerGrey", 
             people: ['mayor', 'mason', 'fisherman', 'gardenerGrey', 'postmanGrey'],
             startX: -2750 
           })
-        break
-        case 8: 
+          break
+        case 7: 
           game.scene.start("gameFour")
         break
-        case 9: 
+        case 8: 
           game.scene.start("walk", { 
             helper: "gardener", 
             helped: "postmanGrey", 
@@ -103,16 +103,11 @@ class MainMenu extends Phaser.Scene {
             startX: -3500
           })
         break
-        case 10: 
+        case 9: 
           game.scene.start("gameFive")
         break
         default :
-          game.scene.start("walk", {
-            helper: "mayor",
-            helped: "masonGrey",
-            people: ['masonGrey', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
-            startX: 0
-          })
+          game.scene.start("error")
         break
       }
     })
@@ -169,6 +164,9 @@ class MainMenu extends Phaser.Scene {
         break
         case 10: 
           game.scene.start("gameFive")
+        break
+        default :
+          game.scene.start("error")
         break
       }
     })

@@ -19,6 +19,7 @@ var config = {
     Controls,
     Music,
     Moral,
+    Error,
     End
   ]
 }

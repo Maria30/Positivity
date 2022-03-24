@@ -14,6 +14,7 @@ class Loading extends Phaser.Scene {
     this.load.image("musicOn","./assets/img/musicOn.png")
     this.load.image("musicOff","./assets/img/musicOff.png")
     this.load.image("happySun","./assets/img/happySun.png")
+    this.load.image("sadSun","./assets/img/sadSun.png")
 
     //* Audio
     this.load.audio('music', './assets/audio/main_theme.wav')
@@ -248,6 +249,6 @@ class Loading extends Phaser.Scene {
   create() {    
     game.scene.stop("loading")
     game.scene.start("music")
-    game.scene.start("gameTwo")
+    game.scene.start("menu")
   }
 }

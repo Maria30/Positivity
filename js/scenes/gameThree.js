@@ -104,8 +104,8 @@ class GameThree extends Phaser.Scene {
     this.planeIcon.visible = false
 
     //* Indice d'événement de discussion 
-    this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-300, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
-    this.talkText = this.add.text(this.character.x+350, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
+    this.talkRect = this.add.rexRoundRectangle(this.character.x+50, this.character.y-300, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
+    this.talkText = this.add.text(this.character.x+50, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
     this.talkText.visible = false
     this.talkRect.visible = false
 

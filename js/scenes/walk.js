@@ -63,7 +63,7 @@ class Walk extends Phaser.Scene {
     })
 
     //* Personnage joué
-    this.character =  this.add.image(config.width*.5, config.height-40, this.helper).setOrigin(0, 1)
+    this.character =  this.add.image(config.width*.5, config.height-40, this.helper).setOrigin(.5, 1)
     this.character.setScale(.5)
     this.character.flipX = true
 
@@ -153,6 +153,9 @@ class Walk extends Phaser.Scene {
               textArray: game.textArray[8],
               firstToTalk: 0
             })
+          break
+          default :
+            game.scene.start("error")
           break
         }
         game.step++
