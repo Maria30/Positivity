@@ -36,7 +36,7 @@ class Thanks extends Phaser.Scene {
     }, this)
 
     this.instagram.on('pointerup', function () {
-      window.open('https://www.instagram.com/posivity.game/')
+      window.open('https://www.instagram.com/positivity.game/')
     }, this)
 
     this.forms.on('pointerup', function () {

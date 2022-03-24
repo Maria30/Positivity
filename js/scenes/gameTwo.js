@@ -35,7 +35,7 @@ class GameTwo extends Phaser.Scene {
       setXY:
       {
           x: 700,
-          y: config.height*.75,
+          y: config.height-150,
           stepX: 550
       }
     })
@@ -53,18 +53,18 @@ class GameTwo extends Phaser.Scene {
       setXY:
       {
         x: 1512,
-        y: config.height*.75,
+        y: config.height-40,
         stepX: 756
       }
     })
     this.npc.children.iterate((child) => {
       child.setScale(.5, .5)
-      child.setOrigin(.5, .5)
+      child.setOrigin(.5, 1)
       child.x += this.distance
     }) 
 
     //* Personnage joué
-    this.character =  this.add.image(config.width*.5, config.height*.75, "mason")
+    this.character =  this.add.image(config.width*.5, config.height-40, "mason").setOrigin(0, 1)
     this.character.setScale(.5)
     this.character.flipX = true
 
@@ -79,8 +79,8 @@ class GameTwo extends Phaser.Scene {
     this.rodIcon.visible = false
 
     //* Indice d'événement de discussion
-    this.talkRect = this.add.rexRoundRectangle(this.character.x+250, this.character.y-150, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
-    this.talkText = this.add.text(this.character.x+250, this.character.y-150, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
+    this.talkRect = this.add.rexRoundRectangle(this.character.x+50, this.character.y-300, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
+    this.talkText = this.add.text(this.character.x+50, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
     this.talkText.visible = false
     this.talkRect.visible = false
 
@@ -100,9 +100,10 @@ class GameTwo extends Phaser.Scene {
     })
 
     //* Evénement de discussion
-    this.input.keyboard.on('keydown-E', function () {
-      if (this.scene.isReadyToTalk === true) {
+    this.keyAction.on('down', function () {
+      if (game.scene.keys.gameTwo.isReadyToTalk === true) {
         game.scene.keys.music.playSound('winGame')
+
         game.step = 4
         sessionStorage.setItem("step", game.step)
 

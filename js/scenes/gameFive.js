@@ -29,7 +29,7 @@ class GameFive extends Phaser.Scene {
       setXY:
       {
           x: 700,
-          y: config.height*.75,
+          y: config.height-150,
           stepX: 550
       }
     })
@@ -48,24 +48,24 @@ class GameFive extends Phaser.Scene {
       setXY:
       {
           x: 1512,
-          y: config.height*.75,
+          y: config.height-40,
           stepX: 756
       }
     })
     this.npc.children.iterate((child) => {
       child.setScale(.5, .5)
-      child.setOrigin(.5, .5)
+      child.setOrigin(.5, 1)
       child.x += this.distance
     })
 
     //* Personnage joué
-    this.character =  this.add.image(config.width*.5, config.height*.75, "gardener")
+    this.character =  this.add.image(config.width*.5, config.height-40, "gardener").setOrigin(0, 1)
     this.character.setScale(.5)
     this.character.flipX = true
 
     //* Ajout de l'indice d'événement de discussion
-    this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-150, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
-    this.talkText = this.add.text(this.character.x+350, this.character.y-150, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
+    this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-300, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
+    this.talkText = this.add.text(this.character.x+350, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
     this.talkText.visible = false
     this.talkRect.visible = false
 
@@ -73,7 +73,7 @@ class GameFive extends Phaser.Scene {
     this.bubble = this.add.rexRoundRectangle(config.width*.5, config.height*.1, config.width*.5, config.height*.1, 25, 0xeeeeee)
     this.instruction = this.add.text(config.width*.5, config.height*.1, "Clique sur la boîte aux lettres de la bonne maison", {fontFamily: 'Normal', fontSize: '2.5em', color: "black"}).setOrigin(.5,.5)
     this.bubble.geom.width = this.instruction.width+50
-    this.bubble.displayOriginX = (this.instruction.width+50)/2
+    this.bubble.displayOriginX = (this.instruction.width+50)*.5
 
     //* Premier-plan du village 
     this.foreground = this.add.image(0, config.height, 'foreground').setOrigin(0,1)

@@ -124,7 +124,7 @@ class Loading extends Phaser.Scene {
         "Voici votre canne à pêche !",
         "Oh merci beaucoup ! Où l'avez-vous trouvée ?",
         "Elle se trouvait juste à côté de l'étang ! Vous avez sûrement dû oublier de la prendre au retour !",
-        "Que suis-je bête ! Pour vous remercier, je vais pêcher le poisson le beau, le plus frais et le plus gros que vous ayez jamais vu !",
+        "Que suis-je bête ! Pour vous remercier, je vais pêcher le poisson le plus beau, le plus frais et le plus gros que vous ayez jamais vu !",
         "Merci de votre générosité ! Passez une bonne journée !"
       ],
       //* 4
@@ -201,7 +201,7 @@ class Loading extends Phaser.Scene {
       [
         "Le facteur tend la lettre au maire qui la prend.",
         "En voyant le nom de l'expéditeur, il ouvre tout de suite la lettre et demande aux villageois de se rapprocher.",
-        "Le ville d'à côté a observé la bienveillance qui régne sur le village et à décidé d'apporter également son aide !",
+        "La ville d'à côté a observé la bienveillance du village et à décidé d'apporter également son aide !",
         "Nos villageois n'auront plus jamais à se soucier du passage de la catastrophe !"
       ]
     ]
@@ -248,6 +248,6 @@ class Loading extends Phaser.Scene {
   create() {    
     game.scene.stop("loading")
     game.scene.start("music")
-    game.scene.start("menu")
+    game.scene.start("gameTwo")
   }
 }

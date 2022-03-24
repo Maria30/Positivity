@@ -29,13 +29,13 @@ class GameThree extends Phaser.Scene {
       setXY:
       {
         x: 1512,
-        y: config.height*.75,
+        y: config.height-40,
         stepX: 756
       }
     })
     this.npc.children.iterate((child) => {
       child.setScale(.5, .5)
-      child.setOrigin(.5, .5)
+      child.setOrigin(.5, 1)
       child.x += this.distance
     })
 
@@ -76,7 +76,7 @@ class GameThree extends Phaser.Scene {
     this.mailboxes.children.entries[4].visible = false
 
     //* Personnage joué
-    this.character =  this.add.image(config.width*.5, config.height*.75, "fisherman")
+    this.character =  this.add.image(config.width*.5, config.height-40, "fisherman").setOrigin(0, 1)
     this.character.setScale(.5)
     this.character.flipX = true
 
@@ -104,8 +104,8 @@ class GameThree extends Phaser.Scene {
     this.planeIcon.visible = false
 
     //* Indice d'événement de discussion 
-    this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-150, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
-    this.talkText = this.add.text(this.character.x+350, this.character.y-150, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
+    this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-300, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
+    this.talkText = this.add.text(this.character.x+350, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
     this.talkText.visible = false
     this.talkRect.visible = false
 
@@ -142,8 +142,8 @@ class GameThree extends Phaser.Scene {
     })
     
     //* Evénement de discussion
-    this.input.keyboard.on('keydown-E', function () {
-      if (this.scene.isReadyToTalk === true) {
+    this.keyAction.on('down', function () {
+      if (game.scene.keys.gameThree.isReadyToTalk === true) {
         game.scene.keys.music.playSound('winGame')
 
         game.step = 6
@@ -226,7 +226,7 @@ class GameThree extends Phaser.Scene {
     if(this.keyRight.isDown) {
       this.character.flipX = true
       
-      if (this.background.x >= -4060) {
+      if (this.background.x >= -3800) {
         this.part1.x -= game.speed
         this.part2.x -= game.speed
         this.part3.x -= game.speed

@@ -47,7 +47,6 @@ class MainMenu extends Phaser.Scene {
     this.clickQuit.on('pointerover',function(){this.scene.rectQuit.fillColor = 0x999999})
     this.clickQuit.on('pointerout',function(){this.scene.rectQuit.fillColor = 0x666666})  
 
-
     this.clickPlay.on('pointerup', function () {
       game.scene.keys.music.playSound('click')
       game.scene.stop('menu') 
@@ -67,7 +66,8 @@ class MainMenu extends Phaser.Scene {
           game.scene.start("walk", { 
             helper: "mason", 
             helped: "fishermanGrey", 
-            people: ['mayor', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey']
+            people: ['mayor', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
+            startX: -1250
           })
         break
         case 4: 
@@ -77,7 +77,8 @@ class MainMenu extends Phaser.Scene {
           game.scene.start("walk", { 
             helper: "fisherman", 
             helped: "kidGrey", 
-            people: ['mayor', 'mason', 'kidGrey', 'gardenerGrey', 'postmanGrey']
+            people: ['mayor', 'mason', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
+            startX: -2000
           })
         break
         case 6: 
@@ -87,7 +88,8 @@ class MainMenu extends Phaser.Scene {
           game.scene.start("walk", { 
             helper: "kid", 
             helped: "gardenerGrey", 
-            people: ['mayor', 'mason', 'fisherman', 'gardenerGrey', 'postmanGrey']
+            people: ['mayor', 'mason', 'fisherman', 'gardenerGrey', 'postmanGrey'],
+            startX: -2750 
           })
         break
         case 8: 
@@ -97,11 +99,20 @@ class MainMenu extends Phaser.Scene {
           game.scene.start("walk", { 
             helper: "gardener", 
             helped: "postmanGrey", 
-            people: ['mayor', 'mason', 'fisherman', 'kid', 'postmanGrey']
+            people: ['mayor', 'mason', 'fisherman', 'kid', 'postmanGrey'],
+            startX: -3500
           })
         break
         case 10: 
           game.scene.start("gameFive")
+        break
+        default :
+          game.scene.start("walk", {
+            helper: "mayor",
+            helped: "masonGrey",
+            people: ['masonGrey', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
+            startX: 0
+          })
         break
       }
     })

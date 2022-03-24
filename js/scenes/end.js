@@ -9,8 +9,8 @@ class End extends Phaser.Scene {
     this.textArray = game.textArray[10]
 
     //* Arrière-plan du village
-    this.background =  this.add.image(0, 0, "village")
-    this.background.setOrigin(0,0)
+    this.background =  this.add.image(0, config.height, "village")
+    this.background.setOrigin(0,1)
     this.background.setScale(.7)
 
     //* Boîtes aux lettres

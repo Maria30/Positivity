@@ -34,13 +34,13 @@ class Walk extends Phaser.Scene {
       setXY:
       {
           x: 700,
-          y: config.height*.75,
+          y: config.height-150,
           stepX: 550
       }
     })
     this.mailboxes.children.iterate((child) => {
       child.setScale(.1, .1)
-      child.setOrigin(.5,.5)
+      child.setOrigin(.5, 1)
       child.x += this.startX
     })
     this.mailboxes.children.entries[2].visible = false
@@ -52,18 +52,18 @@ class Walk extends Phaser.Scene {
       setXY:
       {
           x: 1512,
-          y: config.height*.75,
+          y: config.height-40,
           stepX: 756
       }
     })
     this.npc.children.iterate((child) => {
       child.setScale(.5, .5)
-      child.setOrigin(.5, .5)
+      child.setOrigin(.5, 1)
       child.x += this.startX
     })
 
     //* Personnage joué
-    this.character =  this.add.image(config.width*.5, config.height*.75, this.helper)
+    this.character =  this.add.image(config.width*.5, config.height-40, this.helper).setOrigin(0, 1)
     this.character.setScale(.5)
     this.character.flipX = true
 
@@ -101,8 +101,8 @@ class Walk extends Phaser.Scene {
     this.foreground.x = this.startX
 
     //* Indice d'événement de discussion
-    this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-150, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
-    this.talkText = this.add.text(this.character.x+350, this.character.y-150, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
+    this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-300, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
+    this.talkText = this.add.text(this.character.x+350, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
     this.talkText.visible = false
     this.talkRect.visible = false
 

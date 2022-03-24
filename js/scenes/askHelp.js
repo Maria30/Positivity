@@ -52,7 +52,7 @@ class AskHelp extends Phaser.Scene {
       this.scene.text.setText(this.scene.textArray[this.scene.textCount])
 
       if (this.scene.textCount >= this.scene.textArray.length) {
-        console.log(game.step)
+
         game.scene.stop('askHelp')
         switch (game.step) {
           case 1: 
