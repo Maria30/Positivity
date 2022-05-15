@@ -1,25 +1,29 @@
+// ********************************************************* //
+// ********************* MENU PRINCIPAL ******************** //
+// ********************************************************* //
+
 class MainMenu extends Phaser.Scene {
   constructor() {
-    super("menu")
+    super('menu')
   }
 
   create() {
     //* Récupération de la donnée de sauvegarde du jeu dans la session
     if (typeof sessionStorage.step !== 'undefined' && sessionStorage.step < 10) {
-      game.step = parseInt(sessionStorage.getItem("step"))
+      game.step = parseInt(sessionStorage.getItem('step'))
     }
     else {
-      sessionStorage.setItem("step", 0)
-      game.step = parseInt(sessionStorage.getItem("step"))
+      sessionStorage.setItem('step', 0)
+      game.step = parseInt(sessionStorage.getItem('step'))
     }
 
     //* Arrière-plan du village 
-    this.background = this.add.image(config.width*.5, config.height*.5, "background")
+    this.background = this.add.image(config.width*.5, config.height*.5, 'backgroundMenu')
     this.background.height = config.height
     this.background.width = config.width
    
     //* Logo
-    this.title = this.add.image(config.width*.5, config.height*.25, "title").setOrigin(0.5, 0.5)
+    this.title = this.add.image(config.width*.5, config.height*.25, 'title').setOrigin(0.5, 0.5)
     this.title.setScale(.5)
 
     //* Boutons
@@ -52,62 +56,62 @@ class MainMenu extends Phaser.Scene {
       game.scene.stop('menu') 
       switch (game.step) {
         case 0: 
-          game.scene.start("walk", {
-            helper: "mayor",
-            helped: "masonGrey",
+          game.scene.start('walk', {
+            helper: 'mayor',
+            helped: 'masonGrey',
             people: ['masonGrey', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
             startX: 0
           })
           break
         case 1: 
-          game.scene.start("gameOne")
+          game.scene.start('gameOne')
           break
         case 2: 
-          game.scene.start("walk", { 
-            helper: "mason", 
-            helped: "fishermanGrey", 
+          game.scene.start('walk', { 
+            helper: 'mason', 
+            helped: 'fishermanGrey', 
             people: ['mayor', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
             startX: -1000
           })
         break
         case 3: 
-          game.scene.start("gameTwo")
+          game.scene.start('gameTwo')
           break
         case 4: 
-          game.scene.start("walk", { 
-            helper: "fisherman", 
-            helped: "kidGrey", 
+          game.scene.start('walk', { 
+            helper: 'fisherman', 
+            helped: 'kidGrey', 
             people: ['mayor', 'mason', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
             startX: -2000
           })
           break
         case 5: 
-          game.scene.start("gameThree")
+          game.scene.start('gameThree')
         break
         case 6: 
-          game.scene.start("walk", { 
-            helper: "kid", 
-            helped: "gardenerGrey", 
+          game.scene.start('walk', { 
+            helper: 'kid', 
+            helped: 'gardenerGrey', 
             people: ['mayor', 'mason', 'fisherman', 'gardenerGrey', 'postmanGrey'],
             startX: -2750 
           })
           break
         case 7: 
-          game.scene.start("gameFour")
+          game.scene.start('gameFour')
         break
         case 8: 
-          game.scene.start("walk", { 
-            helper: "gardener", 
-            helped: "postmanGrey", 
+          game.scene.start('walk', { 
+            helper: 'gardener', 
+            helped: 'postmanGrey', 
             people: ['mayor', 'mason', 'fisherman', 'kid', 'postmanGrey'],
             startX: -3500
           })
         break
         case 9: 
-          game.scene.start("gameFive")
+          game.scene.start('gameFive')
         break
         default :
-          game.scene.start("error")
+          game.scene.start('error')
         break
       }
     })
@@ -116,19 +120,19 @@ class MainMenu extends Phaser.Scene {
       game.scene.stop('menu') 
       switch (game.step) {
         case 0: 
-          game.scene.start("walk", {
-            helper: "mayor",
-            helped: "masonGrey",
+          game.scene.start('walk', {
+            helper: 'mayor',
+            helped: 'masonGrey',
             people: ['masonGrey', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey']
           })
         break
         case 1: 
-          game.scene.start("gameOne")
+          game.scene.start('gameOne')
         break
         case 3: 
-          game.scene.start("walk", { 
-            helper: "mason", 
-            helped: "fishermanGrey", 
+          game.scene.start('walk', { 
+            helper: 'mason', 
+            helped: 'fishermanGrey', 
             people: ['mayor', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey']
           })
         break
@@ -136,37 +140,37 @@ class MainMenu extends Phaser.Scene {
           game.scene.start("gameTwo")
         break
         case 5: 
-          game.scene.start("walk", { 
-            helper: "fisherman", 
-            helped: "kidGrey", 
+          game.scene.start('walk', { 
+            helper: 'fisherman', 
+            helped: 'kidGrey', 
             people: ['mayor', 'mason', 'kidGrey', 'gardenerGrey', 'postmanGrey']
           })
         break
         case 6: 
-          game.scene.start("gameThree")
+          game.scene.start('gameThree')
           break
         case 7: 
-          game.scene.start("walk", { 
-            helper: "kid", 
-            helped: "gardenerGrey", 
+          game.scene.start('walk', { 
+            helper: 'kid', 
+            helped: 'gardenerGrey', 
             people: ['mayor', 'mason', 'fisherman', 'gardenerGrey', 'postmanGrey']
           })
         break
         case 8: 
-          game.scene.start("gameFour")
+          game.scene.start('gameFour')
         break
         case 9: 
-          game.scene.start("walk", { 
-            helper: "gardener", 
-            helped: "postmanGrey", 
+          game.scene.start('walk', { 
+            helper: 'gardener', 
+            helped: 'postmanGrey', 
             people: ['mayor', 'mason', 'fisherman', 'kid', 'postmanGrey']
           })
         break
         case 10: 
-          game.scene.start("gameFive")
+          game.scene.start('gameFive')
         break
         default :
-          game.scene.start("error")
+          game.scene.start('error')
         break
       }
     })

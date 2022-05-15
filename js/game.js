@@ -1,3 +1,7 @@
+// ********************************************************* //
+// ********************* CONFIGURATION ********************* //
+// ********************************************************* //
+
 var config = {
   type: Phaser.AUTO,
   width: window.innerWidth,
@@ -15,7 +19,7 @@ var config = {
     GameFour,
     GameFive,
     Thanks,
-    ThanksJPO,
+    // ThanksJPO,
     Controls,
     Music,
     Moral,

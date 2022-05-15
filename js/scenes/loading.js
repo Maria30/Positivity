@@ -1,6 +1,10 @@
+// ********************************************************* //
+// ********************** CHARGEMENT *********************** //
+// ********************************************************* //
+
 class Loading extends Phaser.Scene {
   constructor() {
-    super("loading")
+    super('loading')
   }
 
   preload() {
@@ -9,12 +13,12 @@ class Loading extends Phaser.Scene {
     this.load.plugin('rexroundrectangleplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexroundrectangleplugin.min.js', true)
     
     //* Menu 
-    this.load.image("title","./assets/img/title.png")
-    this.load.image("background","./assets/img/background.jpg")
-    this.load.image("musicOn","./assets/img/musicOn.png")
-    this.load.image("musicOff","./assets/img/musicOff.png")
-    this.load.image("happySun","./assets/img/happySun.png")
-    this.load.image("sadSun","./assets/img/sadSun.png")
+    this.load.image('title','./assets/img/title.png')
+    this.load.image('backgroundMenu','./assets/img/background/background.jpg')
+    this.load.image('musicOn','./assets/img/musicOn.png')
+    this.load.image('musicOff','./assets/img/musicOff.png')
+    this.load.image('happySun','./assets/img/happySun.png')
+    this.load.image('sadSun','./assets/img/sadSun.png')
 
     //* Audio
     this.load.audio('music', './assets/audio/main_theme.wav')
@@ -25,60 +29,71 @@ class Loading extends Phaser.Scene {
     this.load.audio('planeFixed', './assets/audio/planeFixed.wav')
 
     //* Marche
-    this.load.image("mailbox","./assets/img/mailbox.png")
-    this.load.image("village","./assets/img/village.jpg")
-    this.load.image("foreground","./assets/img/foreground.png")
+    this.load.image('sky','./assets/img/sky.png')
+    this.load.image('mailbox','./assets/img/mailbox.png')
+    this.load.image('mailbox1','./assets/img/mailbox1.png')
+    this.load.image('village','./assets/img/village/village.png')
+    this.load.image('village1','./assets/img/village/village1.png')
+    this.load.image('village2','./assets/img/village/village2.png')
+    this.load.image('village3','./assets/img/village/village3.png')
+    this.load.image('village4','./assets/img/village/village4.png')
+    this.load.image('foreground','./assets/img/foreground/foreground.png')
+    this.load.image('foreground1','./assets/img/foreground/foreground1.png')
+    this.load.image('foreground2','./assets/img/foreground/foreground2.png')
+    this.load.image('background','./assets/img/background/background.png')
+    this.load.image('background1','./assets/img/background/background1.png')
+    this.load.image('background2','./assets/img/background/background2.png')
 
     //* Personnages
-    this.load.image("mayor","./assets/img/characterGrey/mayor.png")
-    this.load.image("mayorHappy","./assets/img/characterColor/mayorHappy.png")
+    this.load.image('mayor','./assets/img/characterGrey/mayor.png')
+    this.load.image('mayorHappy','./assets/img/characterColor/mayorHappy.png')
   
-    this.load.image("masonGrey","./assets/img/characterGrey/masonGrey.png")
-    this.load.image("mason","./assets/img/characterColor/mason.png")
+    this.load.image('masonGrey','./assets/img/characterGrey/masonGrey.png')
+    this.load.image('mason','./assets/img/characterColor/mason.png')
 
-    this.load.image("kidGrey","./assets/img/characterGrey/kidGrey.png")
-    this.load.image("kid","./assets/img/characterColor/kid.png")
+    this.load.image('kidGrey','./assets/img/characterGrey/kidGrey.png')
+    this.load.image('kid','./assets/img/characterColor/kid.png')
 
-    this.load.image("fishermanGrey","./assets/img/characterGrey/fishermanGrey.png")
-    this.load.image("fisherman","./assets/img/characterColor/fisherman.png")
+    this.load.image('fishermanGrey','./assets/img/characterGrey/fishermanGrey.png')
+    this.load.image('fisherman','./assets/img/characterColor/fisherman.png')
 
-    this.load.image("postmanGrey","./assets/img/characterGrey/postmanGrey.png")
-    this.load.image("postman","./assets/img/characterColor/postman.png")
+    this.load.image('postmanGrey','./assets/img/characterGrey/postmanGrey.png')
+    this.load.image('postman','./assets/img/characterColor/postman.png')
 
-    this.load.image("gardenerGrey","./assets/img/characterGrey/gardenerGrey.png")
-    this.load.image("gardener","./assets/img/characterColor/gardener.png")
+    this.load.image('gardenerGrey','./assets/img/characterGrey/gardenerGrey.png')
+    this.load.image('gardener','./assets/img/characterColor/gardener.png')
 
     //* Jeu n°1
-    this.load.image("wood","./assets/img/wood.png")
-    this.load.image("pencil","./assets/img/pencil.png")
+    this.load.image('wood','./assets/img/wood.png')
+    this.load.image('pencil','./assets/img/pencil.png')
 
     //* Jeu n°2
-    this.load.image("rod","./assets/img/rod.png")
-    this.load.image("rodIcon","./assets/img/rodIcon.png")
+    this.load.image('rod','./assets/img/rod.png')
+    this.load.image("rodIcon",'./assets/img/rodIcon.png')
 
     //* Jeu n°3
-    this.load.image("part1","./assets/img/part1.png")
-    this.load.image("part2","./assets/img/part2.png")
-    this.load.image("part3","./assets/img/part3.png")
-    this.load.image("partIcon1","./assets/img/partIcon1.png")
-    this.load.image("partIcon2","./assets/img/partIcon2.png")
-    this.load.image("partIcon3","./assets/img/partIcon3.png")
-    this.load.image("planeIcon","./assets/img/planeIcon.png")
+    this.load.image('part1','./assets/img/plane/part1.png')
+    this.load.image('part2','./assets/img/plane/part2.png')
+    this.load.image('part3','./assets/img/plane/part3.png')
+    this.load.image('partIcon1','./assets/img/plane/partIcon1.png')
+    this.load.image('partIcon2','./assets/img/plane/partIcon2.png')
+    this.load.image('partIcon3','./assets/img/plane/partIcon3.png')
+    this.load.image('planeIcon','./assets/img/plane/planeIcon.png')
 
     //* Jeu n°4
-    this.load.image("rose","./assets/img/flowers/rose.png")
-    this.load.image("tulip","./assets/img/flowers/tulip.png")
-    this.load.image("daisy","./assets/img/flowers/daisy.png")
-    this.load.image("sunflower","./assets/img/flowers/sunflower.png")
-    this.load.image("orchid","./assets/img/flowers/orchid.png")
-    this.load.image("lily","./assets/img/flowers/lily.png")
-    this.load.image("pansy","./assets/img/flowers/pansy.png")
+    this.load.image('rose','./assets/img/flowers/rose.png')
+    this.load.image('tulip','./assets/img/flowers/tulip.png')
+    this.load.image('daisy','./assets/img/flowers/daisy.png')
+    this.load.image('sunflower','./assets/img/flowers/sunflower.png')
+    this.load.image('orchid','./assets/img/flowers/orchid.png')
+    this.load.image('lily','./assets/img/flowers/lily.png')
+    this.load.image('pansy','./assets/img/flowers/pansy.png')
 
-    this.load.image("shovel","./assets/img/shovel.png")
+    this.load.image('shovel','./assets/img/shovel.png')
   
     //* Remerciements  
-    this.load.image("instagram","./assets/img/instagram.png")
-    this.load.image("forms","./assets/img/forms.png")
+    this.load.image('instagram','./assets/img/instagram.png')
+    this.load.image('forms','./assets/img/forms.png')
 
     //* Dialogues
     game.textArray = [
@@ -113,7 +128,7 @@ class Loading extends Phaser.Scene {
       [
         "Bonjour monsieur le pêcheur ! Ça ne va pas ? Vous avez une petite mine aujourd’hui !",
         "En effet… Cela fait des heures entières que je cherche ma canne à pêche...",
-        "Où l'avez-vous vu pour la dernière fois ?",
+        "Où l'avez-vous vue pour la dernière fois ?",
         "Je suis allé pêcher ce matin à l'extérieur du village et quand je suis rentré dans ma cabane, je ne l'avais plus !",
         "Je vais vous aider à la chercher !",
         "Oh ! C'est gentil de votre part ! Merci !"
@@ -207,7 +222,7 @@ class Loading extends Phaser.Scene {
       ]
     ]
 
-    game.controls = ["Q","D","E"]
+    game.controls = ['Q','D','E']
 
     //* Vitesse du personnage joué
     game.speed = 10
@@ -215,9 +230,9 @@ class Loading extends Phaser.Scene {
 
   showLoadingText() {
     let i = 0
-    this.loadingText1 = this.add.text(config.width*.5, config.height*.5, "Chargement.", {fontFamily: 'Normal', fontSize: '4em', color:"black"}).setOrigin(0.5, 0.5)
-    this.loadingText2 = this.add.text(config.width*.5, config.height*.5, "Chargement..", {fontFamily: 'Normal', fontSize: '4em', color:"black"}).setOrigin(0.5, 0.5)
-    this.loadingText3 = this.add.text(config.width*.5, config.height*.5, "Chargement...", {fontFamily: 'Normal', fontSize: '4em', color:"black"}).setOrigin(0.5, 0.5)
+    this.loadingText1 = this.add.text(config.width*.5, config.height*.5, "Chargement.", {fontFamily: 'Normal', fontSize: '4em', color:'black'}).setOrigin(0.5, 0.5)
+    this.loadingText2 = this.add.text(config.width*.5, config.height*.5, "Chargement..", {fontFamily: 'Normal', fontSize: '4em', color:'black'}).setOrigin(0.5, 0.5)
+    this.loadingText3 = this.add.text(config.width*.5, config.height*.5, "Chargement...", {fontFamily: 'Normal', fontSize: '4em', color:'black'}).setOrigin(0.5, 0.5)
 
     this.loadingText1.visible = true
     this.loadingText2.visible = false
@@ -247,8 +262,8 @@ class Loading extends Phaser.Scene {
   }
 
   create() {    
-    game.scene.stop("loading")
-    game.scene.start("music")
-    game.scene.start("menu")
+    game.scene.stop('loading')
+    game.scene.start('music')
+    game.scene.start('menu')
   }
 }

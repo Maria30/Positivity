@@ -1,6 +1,10 @@
+// ********************************************************* //
+// ************** DIALOGUES APRÈS UN MINI-JEU ************** //
+// ********************************************************* //
+
 class HadHelp extends Phaser.Scene {
   constructor() {
-    super("hadHelp")
+    super('hadHelp')
   }
 
   //* Récupération des données
@@ -16,7 +20,26 @@ class HadHelp extends Phaser.Scene {
     this.textCount = 0
 
     //* Arrière-plan du village 
-    this.background =  this.add.tileSprite(0, 0, window.width, window.height, "background")
+    switch (this.helper) {
+      case 'mayor':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background')
+        break
+      case 'mason':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background')
+        break
+      case 'fisherman':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background1')
+        break
+      case 'kid':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background2')
+        break
+      case 'gardener':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background2')
+        break
+      default:
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background')
+        break
+    }
     this.background.setOrigin(0,0)
 
     //* Personnage joué
@@ -36,10 +59,10 @@ class HadHelp extends Phaser.Scene {
     else if (this.firstToTalk === 1) this.triangleOne.visible = false
 
     //* Indication
-    this.instruction = this.add.text(config.width*.5, config.height*.05, "Clique pour continuer", {fontFamily: 'Normal', fontSize: '2em', color: "black"}).setOrigin(.5,.5)
+    this.instruction = this.add.text(config.width*.5, config.height*.05, 'Clique pour continuer', {fontFamily: 'Normal', fontSize: '2em', color: 'black'}).setOrigin(.5,.5)
 
     //* Dialogue
-    this.text = this.add.text(config.width*.5, config.height*.25, this.textArray[this.textCount], {fontFamily: 'Normal', fontSize: '3em', color: "black", wordWrap: {width: config.width*.7}}).setOrigin(.5, .5)
+    this.text = this.add.text(config.width*.5, config.height*.25, this.textArray[this.textCount], {fontFamily: 'Normal', fontSize: '3em', color: 'black', wordWrap: {width: config.width*.7}}).setOrigin(.5, .5)
     this.nextDialogue() 
   }
 
@@ -52,42 +75,42 @@ class HadHelp extends Phaser.Scene {
       this.scene.text.setText(this.scene.textArray[this.scene.textCount])
       
       if (this.scene.textCount >= this.scene.textArray.length) {
-        game.scene.stop("hadHelp")
+        game.scene.stop('hadHelp')
         switch (game.step) {
         case 2: 
-          game.scene.start("walk", { 
-            helper: "mason", 
-            helped: "fishermanGrey", 
+          game.scene.start('walk', { 
+            helper: 'mason', 
+            helped: 'fishermanGrey', 
             people: ['mayor', 'fishermanGrey', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
             startX: -1250
           })
         break
         case 4: 
-          game.scene.start("walk", { 
-            helper: "fisherman", 
-            helped: "kidGrey", 
+          game.scene.start('walk', { 
+            helper: 'fisherman', 
+            helped: 'kidGrey', 
             people: ['mayor', 'mason', 'kidGrey', 'gardenerGrey', 'postmanGrey'],
             startX: -2000
           })
         break
         case 6: 
-          game.scene.start("walk", { 
-            helper: "kid", 
-            helped: "gardenerGrey", 
+          game.scene.start('walk', { 
+            helper: 'kid', 
+            helped: 'gardenerGrey', 
             people: ['mayor', 'mason', 'fisherman', 'gardenerGrey', 'postmanGrey'],
             startX: -2750
           })
         break
         case 8: 
-          game.scene.start("walk", { 
-            helper: "gardener", 
-            helped: "postmanGrey", 
+          game.scene.start('walk', { 
+            helper: 'gardener', 
+            helped: 'postmanGrey', 
             people: ['mayor', 'mason', 'fisherman', 'kid', 'postmanGrey'],
             startX: -3500
           })
         break
         case 10: 
-          game.scene.start("end")
+          game.scene.start('end')
         break
         }
       }

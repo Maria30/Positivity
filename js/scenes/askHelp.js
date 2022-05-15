@@ -1,6 +1,10 @@
+// ********************************************************* //
+// ************** DIALOGUES AVANT UN MINI-JEU ************** //
+// ********************************************************* //
+
 class AskHelp extends Phaser.Scene {
   constructor() {
-    super("askHelp")
+    super('askHelp')
   }
 
   //* Récupération des données
@@ -16,7 +20,26 @@ class AskHelp extends Phaser.Scene {
     this.textCount = 0
 
     //* Arrière-plan
-    this.background =  this.add.tileSprite(0, 0, window.width, window.height, "background")
+    switch (this.helper) {
+      case 'mayor':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background')
+        break
+      case 'mason':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background')
+        break
+      case 'fisherman':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background')
+        break
+      case 'kid':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background1')
+        break
+      case 'gardener':
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background2')
+        break
+      default:
+        this.background =  this.add.tileSprite(0, 0, window.width, window.height, 'background')
+        break
+    }
     this.background.setOrigin(0,0)
 
     //* Personnage joué
@@ -36,10 +59,10 @@ class AskHelp extends Phaser.Scene {
     else if (this.firstToTalk === 1) this.triangleOne.visible = false
 
     //* Indication
-    this.instruction = this.add.text(config.width*.5, config.height*.05, "Clique pour continuer", {fontFamily: 'Normal', fontSize: '2em', color: "black"}).setOrigin(.5,.5)
+    this.instruction = this.add.text(config.width*.5, config.height*.05, "Clique pour continuer", {fontFamily: 'Normal', fontSize: '2em', color: 'black'}).setOrigin(.5,.5)
     
     //* Dialogue
-    this.text = this.add.text(config.width*.5, config.height*.25, this.textArray[this.textCount], {fontFamily: 'Normal', fontSize: '3em', color: "black", wordWrap: {width: config.width*.7}}).setOrigin(.5, .5)
+    this.text = this.add.text(config.width*.5, config.height*.25, this.textArray[this.textCount], {fontFamily: 'Normal', fontSize: '3em', color: 'black', wordWrap: {width: config.width*.7}}).setOrigin(.5, .5)
     this.nextDialogue() 
   }
 

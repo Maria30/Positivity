@@ -1,6 +1,10 @@
+// ********************************************************* //
+// ********** 2ÈME MINI-JEU - PÊCHEUR (BLEU FONCÉ) ********* //
+// ********************************************************* //
+
 class GameTwo extends Phaser.Scene {
   constructor() {
-    super("gameTwo")
+    super('gameTwo')
   }
 
  create() { 
@@ -18,19 +22,19 @@ class GameTwo extends Phaser.Scene {
     this.keyAction = this.input.keyboard.addKey(game.controls[2])
 
     //* Arrière-plan du village 
-    this.background = this.add.image(0, config.height, 'village').setOrigin(0,1)
+    this.background = this.add.image(0, config.height, 'village1').setOrigin(0,1)
     this.background.setScale(.7)
     this.background.x = this.distance
 
     //* Canne à pêche
-    this.rod = this.add.image(4910, config.height-200, "rod").setInteractive({cursor: 'pointer'})
+    this.rod = this.add.image(4910, config.height-200, 'rod').setInteractive({cursor: 'pointer'})
     this.rod.setScale(.1)
     this.rod.angle = 25
     this.rod.x += this.distance
 
     //* Boîtes aux lettres
     this.mailboxes = this.add.group({
-      key: "mailbox",
+      key: 'mailbox1',
       repeat: 6,
       setXY:
       {
@@ -64,29 +68,29 @@ class GameTwo extends Phaser.Scene {
     }) 
 
     //* Personnage joué
-    this.character =  this.add.image(config.width*.5, config.height-40, "mason").setOrigin(0, 1)
+    this.character =  this.add.image(config.width*.5, config.height-40, 'mason').setOrigin(0, 1)
     this.character.setScale(.5)
     this.character.flipX = true
 
     //* Premier-plan du village 
-    this.foreground = this.add.image(0, config.height, 'foreground').setOrigin(0,1)
+    this.foreground = this.add.image(0, config.height, 'foreground1').setOrigin(0,1)
     this.foreground.setScale(.7)
     this.foreground.x = this.distance
 
     //* Icône de la canne à pêche
-    this.rodIcon = this.add.image(0, config.height, "rodIcon").setOrigin(0,1)
+    this.rodIcon = this.add.image(0, config.height, 'rodIcon').setOrigin(0,1)
     this.rodIcon.setScale(.25)
     this.rodIcon.visible = false
 
     //* Indice d'événement de discussion
     this.talkRect = this.add.rexRoundRectangle(this.character.x+50, this.character.y-300, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
-    this.talkText = this.add.text(this.character.x+50, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
+    this.talkText = this.add.text(this.character.x+50, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: 'black', fontSize: '2em'}).setOrigin(.5,.5)
     this.talkText.visible = false
     this.talkRect.visible = false
 
     //* Consigne
     this.bubble = this.add.rexRoundRectangle(config.width*.5, config.height*.1, config.width*.5, config.height*.1, 25, 0xeeeeee)
-    this.instruction = this.add.text(config.width*.5, config.height*.1, "Cherche la canne à pêche du pêcheur", {fontFamily: 'Normal', fontSize: '2.5em', color: "black"}).setOrigin(.5,.5)
+    this.instruction = this.add.text(config.width*.5, config.height*.1, "Cherche la canne à pêche du pêcheur", {fontFamily: 'Normal', fontSize: '2.5em', color: 'black'}).setOrigin(.5,.5)
     this.bubble.geom.width = this.instruction.width+50
     this.bubble.displayOriginX = (this.instruction.width+50)/2
 
@@ -105,12 +109,12 @@ class GameTwo extends Phaser.Scene {
         game.scene.keys.music.playSound('winGame')
 
         game.step = 4
-        sessionStorage.setItem("step", game.step)
+        sessionStorage.setItem('step', game.step)
 
-        game.scene.stop("gameTwo")
-        game.scene.start("hadHelp", { 
-          helped: "fisherman", 
-          helper: "mason", 
+        game.scene.stop('gameTwo')
+        game.scene.start('hadHelp', { 
+          helped: 'fisherman', 
+          helper: 'mason', 
           textArray: game.textArray[3],
           firstToTalk: 0
         })

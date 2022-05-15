@@ -23,13 +23,47 @@ class Walk extends Phaser.Scene {
     this.keyAction = this.input.keyboard.addKey(game.controls[2])
 
     //* Arrière-plan du village 
-    this.background = this.add.image(0, config.height, 'village').setOrigin(0,1)
+    switch (this.helper) {
+      case 'mayor':
+        this.backgroundId = 'village'
+        this.foregroundId = 'foreground'
+        this.mailboxId = 'mailbox'
+        break
+      case 'mason':
+        this.backgroundId = 'village1'
+        this.foregroundId = 'foreground1'
+        this.mailboxId = 'mailbox1'
+        break
+      case 'fisherman':
+        this.backgroundId = 'village2'
+        this.foregroundId = 'foreground1'
+        this.mailboxId = 'mailbox1'
+        break
+      case 'kid':
+        this.backgroundId = 'village2'
+        this.foregroundId = 'foreground1'
+        this.mailboxId = 'mailbox1'
+        this.sky = this.add.image(0, config.height, 'sky').setOrigin(0,1)
+        break
+      case 'gardener':
+        this.backgroundId = 'village3'
+        this.foregroundId = 'foreground2'
+        this.mailboxId = 'mailbox1'
+        this.sky = this.add.image(0, config.height, 'sky').setOrigin(0,1)
+        break
+      default:
+        this.backgroundId = 'village'
+        this.foregroundId = 'foreground'
+        this.mailboxId = 'mailbox1'
+        break
+    }
+    this.background = this.add.image(0, config.height, this.backgroundId).setOrigin(0,1)
     this.background.setScale(.7)
     this.background.x = this.startX
 
     //* Boîtes aux lettres
     this.mailboxes = this.add.group({
-      key: "mailbox",
+      key: this.mailboxId,
       repeat: 6,
       setXY:
       {
@@ -91,18 +125,18 @@ class Walk extends Phaser.Scene {
     }
 
     this.bubble = this.add.rexRoundRectangle(config.width*.5, config.height*.1, config.width*.5, config.height*.1, 25, 0xeeeeee)
-    this.instruction = this.add.text(config.width*.5, config.height*.1, 'Va aider '+this.personToHelp, {fontFamily: 'Normal', fontSize: '2.5em', color: "black"}).setOrigin(.5,.5)
+    this.instruction = this.add.text(config.width*.5, config.height*.1, 'Va aider '+this.personToHelp, {fontFamily: 'Normal', fontSize: '2.5em', color: 'black'}).setOrigin(.5,.5)
     this.bubble.geom.width = this.instruction.width+50
     this.bubble.displayOriginX = (this.instruction.width+50)/2
 
     //* Premier-plan du village 
-    this.foreground = this.add.image(0, config.height, 'foreground').setOrigin(0,1)
+    this.foreground = this.add.image(0, config.height, this.foregroundId).setOrigin(0,1)
     this.foreground.setScale(.7)
     this.foreground.x = this.startX
 
     //* Indice d'événement de discussion
     this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-300, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
-    this.talkText = this.add.text(this.character.x+350, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
+    this.talkText = this.add.text(this.character.x+350, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: 'black', fontSize: '2em'}).setOrigin(.5,.5)
     this.talkText.visible = false
     this.talkRect.visible = false
 
@@ -115,51 +149,51 @@ class Walk extends Phaser.Scene {
 
         switch (game.step) {
           case 0: 
-            game.scene.start("askHelp", { 
-              helper: "mayor", 
-              helped: "masonGrey", 
+            game.scene.start('askHelp', { 
+              helper: 'mayor', 
+              helped: 'masonGrey', 
               textArray: game.textArray[0],
               firstToTalk: 0
             })
             break
           case 2: 
-            game.scene.start("askHelp", { 
-              helper: "mason", 
-              helped: "fishermanGrey", 
+            game.scene.start('askHelp', { 
+              helper: 'mason', 
+              helped: 'fishermanGrey', 
               textArray: game.textArray[2],
               firstToTalk: 0
             })
           break
           case 4: 
-            game.scene.start("askHelp", { 
-              helper: "fisherman", 
-              helped: "kidGrey", 
+            game.scene.start('askHelp', { 
+              helper: 'fisherman', 
+              helped: 'kidGrey', 
               textArray: game.textArray[4],
               firstToTalk: 1
             })
           break
           case 6: 
-            game.scene.start("askHelp", { 
-              helper: "kid", 
-              helped: "gardenerGrey", 
+            game.scene.start('askHelp', { 
+              helper: 'kid', 
+              helped: 'gardenerGrey', 
               textArray: game.textArray[6],
               firstToTalk: 0
             })
           break
           case 8: 
-            game.scene.start("askHelp", { 
-              helper: "gardener", 
-              helped: "postmanGrey", 
+            game.scene.start('askHelp', { 
+              helper: 'gardener', 
+              helped: 'postmanGrey', 
               textArray: game.textArray[8],
               firstToTalk: 0
             })
           break
           default :
-            game.scene.start("error")
+            game.scene.start('error')
           break
         }
         game.step++
-        sessionStorage.setItem("step", game.step)
+        sessionStorage.setItem('step', game.step)
       }
     })
 
@@ -174,11 +208,11 @@ class Walk extends Phaser.Scene {
     if (game.isReadyToTalk === true) {
       this.talkText.visible = true
       this.talkRect.visible = true
-      if (direction === "right") {
+      if (direction === 'right') {
         this.talkText.x -= game.speed
         this.talkRect.x -= game.speed
       }
-      else if (direction === "left") {
+      else if (direction === 'left') {
         this.talkText.x += game.speed
         this.talkRect.x += game.speed
       }
@@ -204,7 +238,7 @@ class Walk extends Phaser.Scene {
   
         if (this.npc.children.entries[this.idHelped].x < this.character.x + 300 && this.npc.children.entries[this.idHelped].x > this.character.x) {
           if (!game.isReadyToTalk) game.isReadyToTalk = true
-          this.readyToTalk("right")
+          this.readyToTalk('right')
         }
         else {this.talkText.visible = false, this.talkRect.visible = false, game.isReadyToTalk = false}
       }
@@ -228,7 +262,7 @@ class Walk extends Phaser.Scene {
         
         if (this.npc.children.entries[this.idHelped].x < this.character.x + 300 && this.npc.children.entries[this.idHelped].x > this.character.x) {
           if (!game.isReadyToTalk) game.isReadyToTalk = true
-          this.readyToTalk("left")
+          this.readyToTalk('left')
         }
         else {this.talkText.visible = false, this.talkRect.visible = false, game.isReadyToTalk = false}
       }

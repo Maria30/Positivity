@@ -1,6 +1,10 @@
+// ********************************************************* //
+// ********************* MUSIQUE DU JEU ********************* //
+// ********************************************************* //
+
 class Music extends Phaser.Scene {
   constructor() {
-    super("music")
+    super('music')
   }
 
   create() {
@@ -8,7 +12,7 @@ class Music extends Phaser.Scene {
     game.sound.play('music', {loop: true})
     this.isPlaying = true
 
-    this.musicToggle = this.add.image(config.width-10, 10, "musicOn").setInteractive({cursor: 'pointer'}).setOrigin(1, 0)
+    this.musicToggle = this.add.image(config.width-10, 10, 'musicOn').setInteractive({cursor: 'pointer'}).setOrigin(1, 0)
     this.musicToggle.setScale(.15)
     
     this.musicToggle.on('pointerup', function () {

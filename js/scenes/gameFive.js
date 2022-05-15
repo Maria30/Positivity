@@ -1,6 +1,10 @@
+// ********************************************************* //
+// ************ 5ÈME MINI-JEU - FACTEUR (JAUNE) ************ //
+// ********************************************************* //
+
 class GameFive extends Phaser.Scene {
   constructor() {
-    super("gameFive")
+    super('gameFive')
   }
 
   create() { 
@@ -18,13 +22,16 @@ class GameFive extends Phaser.Scene {
     this.keyAction = this.input.keyboard.addKey(game.controls[2])
 
     //* Arrière-plan du village
-    this.background = this.add.image(0, config.height, 'village').setOrigin(0,1)
+    this.sky = this.add.image(0, config.height, 'sky').setOrigin(0,1)
+    this.background = this.add.image(0, config.height, 'village3').setOrigin(0,1)
     this.background.setScale(.7)
+  
+    this.background.x = this.distance
     this.background.x = this.distance
 
     //* Boîtes aux lettres
     this.mailboxes = this.add.group({
-      key: "mailbox",
+      key: 'mailbox1',
       repeat: 6,
       setXY:
       {
@@ -37,7 +44,7 @@ class GameFive extends Phaser.Scene {
       child.setScale(.1, .1)
       child.setOrigin(.5,.5)
       child.x += this.distance
-      child.setInteractive({cursor: "pointer"})
+      child.setInteractive({cursor: 'pointer'})
     })
     this.mailboxes.children.entries[2].visible = false
     this.mailboxes.children.entries[4].visible = false
@@ -59,24 +66,24 @@ class GameFive extends Phaser.Scene {
     })
 
     //* Personnage joué
-    this.character =  this.add.image(config.width*.5, config.height-40, "gardener").setOrigin(0, 1)
+    this.character =  this.add.image(config.width*.5, config.height-40, 'gardener').setOrigin(0, 1)
     this.character.setScale(.5)
     this.character.flipX = true
 
     //* Ajout de l'indice d'événement de discussion
     this.talkRect = this.add.rexRoundRectangle(this.character.x+350, this.character.y-300, 45, 45, 15, 0xeeeeee).setOrigin(.5,.5)
-    this.talkText = this.add.text(this.character.x+350, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: "black", fontSize: '2em'}).setOrigin(.5,.5)
+    this.talkText = this.add.text(this.character.x+350, this.character.y-300, game.controls[2], {fontFamily: 'Normal', color: 'black', fontSize: '2em'}).setOrigin(.5,.5)
     this.talkText.visible = false
     this.talkRect.visible = false
 
     //* Consigne
     this.bubble = this.add.rexRoundRectangle(config.width*.5, config.height*.1, config.width*.5, config.height*.1, 25, 0xeeeeee)
-    this.instruction = this.add.text(config.width*.5, config.height*.1, "Clique sur la boîte aux lettres de la bonne maison", {fontFamily: 'Normal', fontSize: '2.5em', color: "black"}).setOrigin(.5,.5)
+    this.instruction = this.add.text(config.width*.5, config.height*.1, "Clique sur la boîte aux lettres de la bonne maison", {fontFamily: 'Normal', fontSize: '2.5em', color: 'black'}).setOrigin(.5,.5)
     this.bubble.geom.width = this.instruction.width+50
     this.bubble.displayOriginX = (this.instruction.width+50)*.5
 
     //* Premier-plan du village 
-    this.foreground = this.add.image(0, config.height, 'foreground').setOrigin(0,1)
+    this.foreground = this.add.image(0, config.height, 'foreground2').setOrigin(0,1)
     this.foreground.setScale(.7)
     this.foreground.x = this.distance
 
@@ -107,12 +114,12 @@ class GameFive extends Phaser.Scene {
         game.scene.keys.music.playSound('winGame')
 
         game.step = 10
-        sessionStorage.setItem("step", game.step)
+        sessionStorage.setItem('step', game.step)
         
-        game.scene.stop("gameFive")
-        game.scene.start("hadHelp", { 
-          helped: "postman", 
-          helper: "gardener", 
+        game.scene.stop('gameFive')
+        game.scene.start('hadHelp', { 
+          helped: 'postman', 
+          helper: 'gardener', 
           textArray: game.textArray[9],
           firstToTalk: 0
         })
@@ -125,11 +132,11 @@ class GameFive extends Phaser.Scene {
       this.talkText.visible = true
       this.talkRect.visible = true
       game.isReadyToTalk = true
-      if (direction === "right") {
+      if (direction === 'right') {
         this.talkText.x -= game.speed
         this.talkRect.x -= game.speed
       }
-      else if (direction === "left") {
+      else if (direction === 'left') {
         this.talkText.x += game.speed
         this.talkRect.x += game.speed
       }
@@ -156,7 +163,7 @@ class GameFive extends Phaser.Scene {
   
         if (this.npc.children.entries[4].x < this.character.x + 300 && this.npc.children.entries[4].x > this.character.x) {
           if (!game.isReadyToTalk) game.isReadyToTalk = true
-          this.readyToTalk("right")
+          this.readyToTalk('right')
         }
         else {this.talkText.visible = false, this.talkRect.visible = false, game.isReadyToTalk = false}
       }
@@ -180,7 +187,7 @@ class GameFive extends Phaser.Scene {
         
         if (this.npc.children.entries[4].x < this.character.x + 300 && this.npc.children.entries[4].x > this.character.x) {
           if (!game.isReadyToTalk) game.isReadyToTalk = true
-          this.readyToTalk("left")
+          this.readyToTalk('left')
         }
         else {this.talkText.visible = false, this.talkRect.visible = false, game.isReadyToTalk = false}
       }
