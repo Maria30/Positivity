@@ -37,25 +37,25 @@ class End extends Phaser.Scene {
     this.mailboxes.children.entries[4].visible = false
 
     //* Personnages
-    this.mayor =  this.add.image(config.width*.45, config.height*.75, 'mayorHappy')
+    this.mayor =  this.add.image(config.width*.45, config.height-40, 'mayorHappy').setOrigin(.5, 1)
     this.mayor.setScale(.5)
     this.mayor.flipX = true
 
-    this.postman =  this.add.image(config.width*.55, config.height*.75, 'postman')
+    this.postman =  this.add.image(config.width*.55, config.height-40, 'postman').setOrigin(.5, 1)
     this.postman.setScale(.5)
 
-    this.mason =  this.add.image(config.width*.1, config.height*.75, 'mason')
+    this.mason =  this.add.image(config.width*.1, config.height-40, 'mason').setOrigin(.5, 1)
     this.mason.setScale(.5)
     this.mason.flipX = true
 
-    this.fisherman =  this.add.image(config.width*.2, config.height*.75, 'fisherman')
+    this.fisherman =  this.add.image(config.width*.2, config.height-40, 'fisherman').setOrigin(.5, 1)
     this.fisherman.setScale(.5)
     this.fisherman.flipX = true
 
-    this.kid =  this.add.image(config.width*.8, config.height*.75, 'kid')
+    this.kid =  this.add.image(config.width*.8, config.height-40, 'kid').setOrigin(.5, 1)
     this.kid.setScale(.5)
 
-    this.gardener =  this.add.image(config.width*.9, config.height*.75, 'gardener')
+    this.gardener =  this.add.image(config.width*.9, config.height-40, 'gardener').setOrigin(.5, 1)
     this.gardener.setScale(.5)
 
     //* Premier-plan du village 
