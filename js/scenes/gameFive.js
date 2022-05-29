@@ -21,6 +21,9 @@ class GameFive extends Phaser.Scene {
     this.keyRight = this.input.keyboard.addKey(game.controls[1])
     this.keyAction = this.input.keyboard.addKey(game.controls[2])
 
+    this.arrowRight = this.input.keyboard.addKey('right')
+    this.arrowLeft = this.input.keyboard.addKey('left')
+
     //* Arrière-plan du village
     this.sky = this.add.image(0, config.height, 'sky').setOrigin(0,1)
     this.background = this.add.image(0, config.height, 'village3').setOrigin(0,1)
@@ -145,7 +148,7 @@ class GameFive extends Phaser.Scene {
 
   move() {
     //* Avancer vers l'avant
-    if(this.keyRight.isDown) {
+    if(this.keyRight.isDown || this.arrowRight.isDown) {
       
       this.character.flipX = true
 
@@ -170,7 +173,7 @@ class GameFive extends Phaser.Scene {
     }
 
     //* Avancer vers l'arrière
-    else if (this.keyLeft.isDown) {
+    else if (this.keyLeft.isDown || this.arrowLeft.isDown) {
       this.character.flipX = false
 
       if (this.background.x <= -12) {

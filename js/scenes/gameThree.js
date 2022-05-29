@@ -27,6 +27,9 @@ class GameThree extends Phaser.Scene {
     this.keyRight = this.input.keyboard.addKey(game.controls[1])
     this.keyAction = this.input.keyboard.addKey(game.controls[2])
 
+    this.arrowRight = this.input.keyboard.addKey('right')
+    this.arrowLeft = this.input.keyboard.addKey('left')
+
     //* Personnages non-joueurs (NPC)
     this.npc = this.add.group({
       key: this.people,
@@ -227,7 +230,7 @@ class GameThree extends Phaser.Scene {
 
   move() {
     //* Avancer vers l'avant
-    if(this.keyRight.isDown) {
+    if(this.keyRight.isDown || this.arrowRight.isDown) {
       this.character.flipX = true
       
       if (this.background.x >= -3800) {
@@ -255,7 +258,7 @@ class GameThree extends Phaser.Scene {
     }
 
     //* Avancer vers l'arrière
-    else if (this.keyLeft.isDown) {
+    else if (this.keyLeft.isDown || this.arrowLeft.isDown) {
       this.character.flipX = false
 
       if (this.background.x <= -12) {
